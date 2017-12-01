@@ -18,9 +18,12 @@ public class Main {
         }
         tomcat.setPort(Integer.valueOf(webPort));
 
-        // Activiti
+        // Activiti UI
         Host host = tomcat.getHost();
         tomcat.addWebapp(host,"activiti-app", new File("src/main/webapp/activiti-app.war").getAbsolutePath());
+        
+        // Activiti Admin
+        tomcat.addWebapp(host,"activiti-admin", new File("src/main/webapp/activiti-admin.war").getAbsolutePath());
         
         tomcat.start();
         tomcat.getServer().await();
